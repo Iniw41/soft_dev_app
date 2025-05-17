@@ -1,0 +1,51 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.AppHost", "AspireApp1.AppHost\AspireApp1.AppHost.csproj", "{EC5BCE5E-EACD-4407-BA2A-03842685E5C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ServiceDefaults", "AspireApp1.ServiceDefaults\AspireApp1.ServiceDefaults.csproj", "{FF9DC0A3-6BFF-42B5-9DAE-B9BB1F34F195}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.ApiService", "AspireApp1.ApiService\AspireApp1.ApiService.csproj", "{A63F2494-BF8B-4FE0-9298-C06EAD08A6E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireApp1.Web", "AspireApp1.Web\AspireApp1.Web.csproj", "{6C3954B7-EDF2-41F4-A2BE-28BD929A4092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "..\WpfApp1\WpfApp1.csproj", "{F7B7DAC4-B6C9-4B33-904A-D6D9645DB34C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yawa_bani_vs_studio", "..\yawa_bani_vs_studio\yawa_bani_vs_studio.csproj", "{FB6DAC48-FBA4-4E09-B4EC-5E5A3474F703}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC5BCE5E-EACD-4407-BA2A-03842685E5C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC5BCE5E-EACD-4407-BA2A-03842685E5C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC5BCE5E-EACD-4407-BA2A-03842685E5C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC5BCE5E-EACD-4407-BA2A-03842685E5C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF9DC0A3-6BFF-42B5-9DAE-B9BB1F34F195}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF9DC0A3-6BFF-42B5-9DAE-B9BB1F34F195}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF9DC0A3-6BFF-42B5-9DAE-B9BB1F34F195}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF9DC0A3-6BFF-42B5-9DAE-B9BB1F34F195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A63F2494-BF8B-4FE0-9298-C06EAD08A6E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A63F2494-BF8B-4FE0-9298-C06EAD08A6E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A63F2494-BF8B-4FE0-9298-C06EAD08A6E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A63F2494-BF8B-4FE0-9298-C06EAD08A6E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C3954B7-EDF2-41F4-A2BE-28BD929A4092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C3954B7-EDF2-41F4-A2BE-28BD929A4092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C3954B7-EDF2-41F4-A2BE-28BD929A4092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C3954B7-EDF2-41F4-A2BE-28BD929A4092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7B7DAC4-B6C9-4B33-904A-D6D9645DB34C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7B7DAC4-B6C9-4B33-904A-D6D9645DB34C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7B7DAC4-B6C9-4B33-904A-D6D9645DB34C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7B7DAC4-B6C9-4B33-904A-D6D9645DB34C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6DAC48-FBA4-4E09-B4EC-5E5A3474F703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6DAC48-FBA4-4E09-B4EC-5E5A3474F703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6DAC48-FBA4-4E09-B4EC-5E5A3474F703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6DAC48-FBA4-4E09-B4EC-5E5A3474F703}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
