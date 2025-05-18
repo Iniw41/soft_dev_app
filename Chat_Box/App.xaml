@@ -10,7 +10,6 @@
                 <ResourceDictionary Source="./Themes/ChatItem.xaml"/>
                 <ResourceDictionary Source="./Themes/MessageBox.xaml"/>
                 <ResourceDictionary Source="./Themes/StylishScrollbar.xaml"/>
-
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

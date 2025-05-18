@@ -31,7 +31,7 @@
                 MouseDown="Border_MouseDown">
 
             <Grid HorizontalAlignment="Stretch">
-                <Label Content="Final Project For now"
+                <Label Content="Biniw Chat"
                        Foreground="Gray"
                        FontWeight="SemiBold"/>
 

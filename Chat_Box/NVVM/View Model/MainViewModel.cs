@@ -6,15 +6,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Chat_Box.Core;
 using Chat_Box.NVVM.Model;
+using Chat_Box.NVVM.Net;
 
 namespace Chat_Box.NVVM.View_Model
 {
     class MainViewModel : ObservableObject
     {
+
         public ObservableCollection<MessageModel> Messages { get; set; }
         public ObservableCollection<ContactModel> Contacts { get; set; }
 
         /* Commands */
+        public RelayCommand ConnectToServerCommand { get; set; }
+
+        private Server _server;
+
         public  RelayCommand SendCommand { get; set; }
 
         private ContactModel _selectedContact;
@@ -38,6 +44,11 @@ namespace Chat_Box.NVVM.View_Model
             set { 
                 _message = value; 
                 OnPropertyChanged();
+
+                if (_selectedContact != null)
+                {
+                    ConnectToServer();
+                }
             }
         }
 
@@ -45,6 +56,9 @@ namespace Chat_Box.NVVM.View_Model
 
         public MainViewModel()
         {
+            _server  = new Server();
+            ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer());
+
             Messages = new ObservableCollection<MessageModel>();
             Contacts = new ObservableCollection<ContactModel>();
 
