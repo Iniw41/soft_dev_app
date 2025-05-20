@@ -89,6 +89,9 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SqlServerUnitTest1.resx">
+      <DependentUpon>SqlServerUnitTest1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Database\Iniw_Chat_DBDataSet.xsc">
       <DependentUpon>Iniw_Chat_DBDataSet.xsd</DependentUpon>
     </None>
