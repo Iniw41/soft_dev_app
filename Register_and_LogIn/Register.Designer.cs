@@ -35,17 +35,17 @@
             this.label_name_project = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.password_textbox = new System.Windows.Forms.TextBox();
+            this.username_textbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.conf_pass_textbox = new System.Windows.Forms.TextBox();
             this.LogIn_btn = new System.Windows.Forms.Button();
             this.Go_back_click = new System.Windows.Forms.Label();
+            this.age_textbox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.email_textbox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -149,27 +149,27 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Username";
             // 
-            // textBox2
+            // password_textbox
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.Color.Gray;
-            this.textBox2.Location = new System.Drawing.Point(347, 162);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(195, 31);
-            this.textBox2.TabIndex = 9;
+            this.password_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.password_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.password_textbox.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password_textbox.ForeColor = System.Drawing.Color.Gray;
+            this.password_textbox.Location = new System.Drawing.Point(347, 162);
+            this.password_textbox.Name = "password_textbox";
+            this.password_textbox.Size = new System.Drawing.Size(195, 31);
+            this.password_textbox.TabIndex = 9;
             // 
-            // textBox1
+            // username_textbox
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(347, 103);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(195, 31);
-            this.textBox1.TabIndex = 8;
+            this.username_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.username_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.username_textbox.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username_textbox.ForeColor = System.Drawing.Color.Gray;
+            this.username_textbox.Location = new System.Drawing.Point(347, 103);
+            this.username_textbox.Name = "username_textbox";
+            this.username_textbox.Size = new System.Drawing.Size(195, 31);
+            this.username_textbox.TabIndex = 8;
             // 
             // label1
             // 
@@ -197,64 +197,16 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Password Confirmation";
             // 
-            // textBox3
+            // conf_pass_textbox
             // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.Color.Gray;
-            this.textBox3.Location = new System.Drawing.Point(347, 220);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(195, 31);
-            this.textBox3.TabIndex = 12;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Noto Sans JP", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(270, 276);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(71, 30);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Email";
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.Color.Gray;
-            this.textBox4.Location = new System.Drawing.Point(347, 276);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(195, 31);
-            this.textBox4.TabIndex = 14;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Noto Sans JP", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(129, 335);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(212, 30);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "Email Confirmation";
-            // 
-            // textBox5
-            // 
-            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.ForeColor = System.Drawing.Color.Gray;
-            this.textBox5.Location = new System.Drawing.Point(347, 334);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(195, 31);
-            this.textBox5.TabIndex = 16;
+            this.conf_pass_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.conf_pass_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.conf_pass_textbox.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.conf_pass_textbox.ForeColor = System.Drawing.Color.Gray;
+            this.conf_pass_textbox.Location = new System.Drawing.Point(347, 220);
+            this.conf_pass_textbox.Name = "conf_pass_textbox";
+            this.conf_pass_textbox.Size = new System.Drawing.Size(195, 31);
+            this.conf_pass_textbox.TabIndex = 12;
             // 
             // LogIn_btn
             // 
@@ -268,6 +220,7 @@
             this.LogIn_btn.TabIndex = 18;
             this.LogIn_btn.Text = "Register";
             this.LogIn_btn.UseVisualStyleBackColor = false;
+            this.LogIn_btn.Click += new System.EventHandler(this.LogIn_btn_Click);
             // 
             // Go_back_click
             // 
@@ -283,6 +236,55 @@
             this.Go_back_click.Text = "Go Back <";
             this.Go_back_click.Click += new System.EventHandler(this.Go_back_click_Click);
             // 
+            // age_textbox
+            // 
+            this.age_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.age_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.age_textbox.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.age_textbox.ForeColor = System.Drawing.Color.Gray;
+            this.age_textbox.Location = new System.Drawing.Point(347, 276);
+            this.age_textbox.Name = "age_textbox";
+            this.age_textbox.Size = new System.Drawing.Size(195, 31);
+            this.age_textbox.TabIndex = 14;
+            this.age_textbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.age_textbox_KeyPress);
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Noto Sans JP", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Gray;
+            this.label5.Location = new System.Drawing.Point(290, 276);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 30);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Age";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Noto Sans JP", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Gray;
+            this.label6.Location = new System.Drawing.Point(270, 335);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 30);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Email";
+            // 
+            // email_textbox
+            // 
+            this.email_textbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.email_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.email_textbox.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email_textbox.ForeColor = System.Drawing.Color.Gray;
+            this.email_textbox.Location = new System.Drawing.Point(347, 334);
+            this.email_textbox.Name = "email_textbox";
+            this.email_textbox.Size = new System.Drawing.Size(195, 31);
+            this.email_textbox.TabIndex = 16;
+            // 
             // Register
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,17 +294,17 @@
             this.Controls.Add(this.Go_back_click);
             this.Controls.Add(this.LogIn_btn);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.email_textbox);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.age_textbox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.conf_pass_textbox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.password_textbox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.username_textbox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -322,16 +324,16 @@
         private System.Windows.Forms.Label label_name_project;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox password_textbox;
+        private System.Windows.Forms.TextBox username_textbox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox conf_pass_textbox;
         private System.Windows.Forms.Button LogIn_btn;
         private System.Windows.Forms.Label Go_back_click;
+        private System.Windows.Forms.TextBox age_textbox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox email_textbox;
     }
 }

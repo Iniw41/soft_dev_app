@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.Send_email_verifiaction_btn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -235,12 +236,26 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Forget Password";
             // 
+            // Send_email_verifiaction_btn
+            // 
+            this.Send_email_verifiaction_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
+            this.Send_email_verifiaction_btn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(65)))), ((int)(((byte)(71)))));
+            this.Send_email_verifiaction_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Send_email_verifiaction_btn.ForeColor = System.Drawing.Color.Silver;
+            this.Send_email_verifiaction_btn.Location = new System.Drawing.Point(564, 217);
+            this.Send_email_verifiaction_btn.Name = "Send_email_verifiaction_btn";
+            this.Send_email_verifiaction_btn.Size = new System.Drawing.Size(97, 36);
+            this.Send_email_verifiaction_btn.TabIndex = 31;
+            this.Send_email_verifiaction_btn.Text = "Send";
+            this.Send_email_verifiaction_btn.UseVisualStyleBackColor = false;
+            // 
             // Forget_Password
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Send_email_verifiaction_btn);
             this.Controls.Add(this.LogIn_btn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
@@ -280,5 +295,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button Send_email_verifiaction_btn;
     }
 }

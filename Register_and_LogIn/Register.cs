@@ -12,6 +12,15 @@ namespace Register_and_LogIn
 {
     public partial class Register : Form
     {
+        private string username;
+        private string password;
+        private string confirmPassword;
+        private int age;
+        private string email;
+
+        string connectionString = @"Data Source=DESKTOP-8GQK0A1\SQLEXPRESS;Initial Catalog=Login;Integrated Security=True";
+
+
         bool mouseDown;
         private Point lastLocation;
 
@@ -73,6 +82,35 @@ namespace Register_and_LogIn
             this.Hide();
             Log_In LogIn_Window = new Log_In();
             LogIn_Window.Show();
+        }
+
+        private void LogIn_btn_Click(object sender, EventArgs e)
+        {
+            username = username_textbox.Text;
+            password = password_textbox.Text;
+            if (password != conf_pass_textbox.Text)
+            {
+                MessageBox.Show("Passwords do not match.");
+                return;
+            }
+            else
+            {
+                age = Convert.ToInt32(age_textbox.Text);
+                email = email_textbox.Text;
+            }
+        }
+
+        private void age_textbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if  ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
     }
 }
