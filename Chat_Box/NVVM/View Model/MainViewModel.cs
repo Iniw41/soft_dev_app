@@ -47,7 +47,7 @@ namespace Chat_Box.NVVM.View_Model
 
                 if (_selectedContact != null)
                 {
-                    ConnectToServer();
+                    
                 }
             }
         }

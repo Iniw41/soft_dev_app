@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forget_Password.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forget_Password.Designer.cs">
+      <DependentUpon>Forget_Password.cs</DependentUpon>
+    </Compile>
     <Compile Include="Log_In.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forget_Password.resx">
+      <DependentUpon>Forget_Password.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Log_In.resx">
       <DependentUpon>Log_In.cs</DependentUpon>
     </EmbeddedResource>
