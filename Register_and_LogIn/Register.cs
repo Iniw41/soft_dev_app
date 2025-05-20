@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace Register_and_LogIn
 {
     public partial class Register : Form
     {
-        private string username;
-        private string password;
-        private string confirmPassword;
-        private int age;
-        private string email;
 
-        string connectionString = @"Data Source=DESKTOP-8GQK0A1\SQLEXPRESS;Initial Catalog=Login;Integrated Security=True";
+        private string confirmPassword;
+
+
+        
+
+
 
 
         bool mouseDown;
@@ -86,8 +89,13 @@ namespace Register_and_LogIn
 
         private void LogIn_btn_Click(object sender, EventArgs e)
         {
-            username = username_textbox.Text;
-            password = password_textbox.Text;
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            bool isValidEmail = Regex.IsMatch(email_textbox.Text, pattern);
+            bool allowed = true;
+
+            var username = username_textbox.Text.Trim();
+            var password = password_textbox.Text;
             if (password != conf_pass_textbox.Text)
             {
                 MessageBox.Show("Passwords do not match.");
@@ -95,8 +103,67 @@ namespace Register_and_LogIn
             }
             else
             {
-                age = Convert.ToInt32(age_textbox.Text);
-                email = email_textbox.Text;
+                // Hash the password (example using SHA256)
+                byte[] passwordHash;
+                using (var sha = System.Security.Cryptography.SHA256.Create())
+                {
+                    passwordHash = sha.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                }
+                int age = Convert.ToInt32(age_textbox.Text);
+                if (isValidEmail)
+                {
+                    var email = email_textbox.Text.Trim();
+                    if (allowed)
+                    {
+                        try
+                        {
+                            string connectionString = @"Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;";
+
+                            using (var connect = new SqlConnection(connectionString))
+                            using (var cmd = connect.CreateCommand())
+                            {
+                                cmd.CommandText = @"
+                                INSERT INTO Users (username, password_hash, email, age)
+                                VALUES (@u, @p, @e, @a);
+                                SELECT SCOPE_IDENTITY();   -- get the auto-generated id back
+                                ";
+                                cmd.Parameters.Add("@u", SqlDbType.VarChar, 50).Value = username;
+                                cmd.Parameters.Add("@p", SqlDbType.VarBinary, 32).Value = passwordHash;
+                                cmd.Parameters.Add("@e", SqlDbType.VarChar, 50).Value = email;
+                                cmd.Parameters.Add("@a", SqlDbType.Int).Value = age;
+
+                                connect.Open();
+
+                                var newId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                                    MessageBox.Show($"Registration successful! Your user ID is {newId}.");
+                                    this.Hide();
+                                    Log_In LogIn_Window = new Log_In();
+                                    LogIn_Window.Show();
+                                
+                            }
+                        }
+                        catch (SqlException ex)
+                        {
+                            // Handle SQL exceptions
+                            MessageBox.Show("An error occurred while connecting to the database: " + ex.Message);
+                        }
+                        catch (FormatException ex)
+                        {
+                            // Handle format exceptions
+                            MessageBox.Show("Invalid input format: " + ex.Message);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Handle other exceptions
+                            MessageBox.Show("An unexpected error occurred: " + ex.Message);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid email format.");
+                }
             }
         }
 
