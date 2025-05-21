@@ -21,5 +21,27 @@ namespace Register_and_LogIn
         {
 
         }
+
+        private void Minimize_btn_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Maximize_btn_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                this.WindowState = FormWindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void close_btn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

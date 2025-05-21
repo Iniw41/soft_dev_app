@@ -72,6 +72,7 @@
             Minimize_btn.TabIndex = 3;
             Minimize_btn.Text = "_";
             Minimize_btn.UseVisualStyleBackColor = true;
+            Minimize_btn.Click += Minimize_btn_Click;
             // 
             // Maximize_btn
             // 
@@ -87,6 +88,7 @@
             Maximize_btn.TabIndex = 2;
             Maximize_btn.Text = "▢";
             Maximize_btn.UseVisualStyleBackColor = true;
+            Maximize_btn.Click += Maximize_btn_Click;
             // 
             // close_btn
             // 
@@ -102,6 +104,7 @@
             close_btn.TabIndex = 1;
             close_btn.Text = "✕";
             close_btn.UseVisualStyleBackColor = true;
+            close_btn.Click += close_btn_Click;
             // 
             // label_name_project
             // 
