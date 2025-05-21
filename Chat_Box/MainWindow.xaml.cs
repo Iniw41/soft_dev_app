@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace Chat_Box
 {
@@ -47,9 +48,15 @@ namespace Chat_Box
             }
         }
 
+        private void Icon_Click(object sender, RoutedEventArgs e)
+        {
+            var settingsWindow = new Account_Settings();
+            settingsWindow.Show();
+        }
+
         private void btn_Close_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            System.Windows.Application.Current.Shutdown();
         }
     }
 }

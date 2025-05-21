@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Microsoft.Data.SqlClient;
 
 
 namespace Register_and_LogIn
@@ -17,12 +18,6 @@ namespace Register_and_LogIn
     {
 
         private string confirmPassword;
-
-
-        
-
-
-
 
         bool mouseDown;
         private Point lastLocation;
@@ -117,7 +112,7 @@ namespace Register_and_LogIn
                     {
                         try
                         {
-                            string connectionString = @"Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;";
+                            string connectionString = @"Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
 
                             using (var connect = new SqlConnection(connectionString))
                             using (var cmd = connect.CreateCommand())

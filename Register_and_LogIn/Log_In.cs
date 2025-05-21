@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Security.Cryptography;
+using Chat_Box;
+using Microsoft.Data.SqlClient;
+using System.Windows;
+
+
 
 namespace Register_and_LogIn
 {
     public partial class Log_In : Form
     {
+        private string connectionString = "Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         bool mouseDown;
-        private Point lastLocation;
+        private System.Drawing.Point lastLocation;
         public Log_In()
         {
             InitializeComponent();
@@ -35,7 +43,7 @@ namespace Register_and_LogIn
         {
             if (mouseDown)
             {
-                this.Location = new Point(
+                this.Location = new System.Drawing.Point(
                         (this.Location.X - lastLocation.X) + e.X,
                         (this.Location.Y - lastLocation.Y) + e.Y);
             }
@@ -65,7 +73,7 @@ namespace Register_and_LogIn
 
         private void close_btn_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            System.Windows.Forms.Application.Exit();
         }
 
         private void Register_text_click_Click(object sender, EventArgs e)
@@ -77,12 +85,61 @@ namespace Register_and_LogIn
 
         private void Forgot_Pass_Click_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Forget_Password forgot_password_window = new Forget_Password();
+            forgot_password_window.Show();
         }
 
         private void LogIn_btn_Click(object sender, EventArgs e)
         {
+            string username = username_textbox.Text.Trim();
+            string password = password_textbox.Text;
 
+            // Hash the password
+            byte[] passwordHash = HashPassword(password);
+
+            bool isAuthenticated = AuthenticateUser(username, passwordHash);
+
+            if (isAuthenticated)
+            {
+                this.Hide();
+                if (System.Windows.Application.Current == null)
+                {
+                    var app = new Chat_Box.App();
+                    app.InitializeComponent(); // Loads App.xaml resources
+                    Chat_Box.MainWindow wpfWindow = new Chat_Box.MainWindow();
+                    app.Run(wpfWindow);
+                }
+            }
         }
+
+        private bool AuthenticateUser(string username, byte[] passwordHash)
+        {
+            using (var conn = new SqlConnection(connectionString))
+            using (SqlCommand cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = @"
+                    SELECT COUNT(*) FROM Users
+                    WHERE username = @username AND password_hash = @passwordHash";
+
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@passwordHash", passwordHash);
+
+                conn.Open();
+                int matchCount = (int)cmd.ExecuteScalar();
+
+                return matchCount > 0;
+            }
+        }
+
+        private byte[] HashPassword(string password)
+        {
+            using (SHA256 sha = SHA256.Create())
+            {
+                return sha.ComputeHash(Encoding.UTF8.GetBytes(password));
+            }
+        }
+
+
     }
 }

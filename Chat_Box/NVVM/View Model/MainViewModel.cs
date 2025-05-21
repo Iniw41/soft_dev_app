@@ -124,15 +124,14 @@ namespace Chat_Box.NVVM.View_Model
                 IsNativeOrigin = true
             });
 
-            for (int i = 0; i < 3; i++)
+           
+            Contacts.Add(new ContactModel
             {
-                Contacts.Add(new ContactModel
-                {
-                    Username = $"Biniw {i}",
-                    Image_Source = "Icons/Biniw.png",
-                    Messages = Messages
-                });
-            }
+                Username = $"Biniw Group Chat",
+                Image_Source = "https://dinopixel.com/preload/0523/SLIME-3.png",
+                Messages = Messages
+            });
+ 
         }
     }
 }
