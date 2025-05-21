@@ -35,11 +35,11 @@
             label_name_project = new Label();
             Change_pass_btn = new Button();
             label4 = new Label();
-            textBox3 = new TextBox();
+            new_pass_conf_textbox = new TextBox();
             label3 = new Label();
-            textBox2 = new TextBox();
+            new_pass_textbox = new TextBox();
             label1 = new Label();
-            textBox1 = new TextBox();
+            current_password_textbox = new TextBox();
             label2 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -146,17 +146,17 @@
             label4.TabIndex = 25;
             label4.Text = "Password Confirmation";
             // 
-            // textBox3
+            // new_pass_conf_textbox
             // 
-            textBox3.BackColor = Color.FromArgb(62, 65, 71);
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox3.ForeColor = Color.Gray;
-            textBox3.Location = new Point(396, 239);
-            textBox3.Margin = new Padding(4, 3, 4, 3);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(227, 31);
-            textBox3.TabIndex = 24;
+            new_pass_conf_textbox.BackColor = Color.FromArgb(62, 65, 71);
+            new_pass_conf_textbox.BorderStyle = BorderStyle.FixedSingle;
+            new_pass_conf_textbox.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            new_pass_conf_textbox.ForeColor = Color.Gray;
+            new_pass_conf_textbox.Location = new Point(396, 239);
+            new_pass_conf_textbox.Margin = new Padding(4, 3, 4, 3);
+            new_pass_conf_textbox.Name = "new_pass_conf_textbox";
+            new_pass_conf_textbox.Size = new Size(227, 31);
+            new_pass_conf_textbox.TabIndex = 24;
             // 
             // label3
             // 
@@ -171,17 +171,17 @@
             label3.TabIndex = 23;
             label3.Text = "New Password";
             // 
-            // textBox2
+            // new_pass_textbox
             // 
-            textBox2.BackColor = Color.FromArgb(62, 65, 71);
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox2.ForeColor = Color.Gray;
-            textBox2.Location = new Point(396, 172);
-            textBox2.Margin = new Padding(4, 3, 4, 3);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(227, 31);
-            textBox2.TabIndex = 21;
+            new_pass_textbox.BackColor = Color.FromArgb(62, 65, 71);
+            new_pass_textbox.BorderStyle = BorderStyle.FixedSingle;
+            new_pass_textbox.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            new_pass_textbox.ForeColor = Color.Gray;
+            new_pass_textbox.Location = new Point(396, 172);
+            new_pass_textbox.Margin = new Padding(4, 3, 4, 3);
+            new_pass_textbox.Name = "new_pass_textbox";
+            new_pass_textbox.Size = new Size(227, 31);
+            new_pass_textbox.TabIndex = 21;
             // 
             // label1
             // 
@@ -196,17 +196,17 @@
             label1.TabIndex = 19;
             label1.Text = "Change Password";
             // 
-            // textBox1
+            // current_password_textbox
             // 
-            textBox1.BackColor = Color.FromArgb(62, 65, 71);
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.ForeColor = Color.Gray;
-            textBox1.Location = new Point(399, 113);
-            textBox1.Margin = new Padding(4, 3, 4, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(227, 31);
-            textBox1.TabIndex = 31;
+            current_password_textbox.BackColor = Color.FromArgb(62, 65, 71);
+            current_password_textbox.BorderStyle = BorderStyle.FixedSingle;
+            current_password_textbox.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            current_password_textbox.ForeColor = Color.Gray;
+            current_password_textbox.Location = new Point(399, 113);
+            current_password_textbox.Margin = new Padding(4, 3, 4, 3);
+            current_password_textbox.Name = "current_password_textbox";
+            current_password_textbox.Size = new Size(227, 31);
+            current_password_textbox.TabIndex = 31;
             // 
             // label2
             // 
@@ -227,13 +227,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(47, 49, 54);
             ClientSize = new Size(933, 519);
-            Controls.Add(textBox1);
+            Controls.Add(current_password_textbox);
             Controls.Add(label2);
             Controls.Add(Change_pass_btn);
             Controls.Add(panel1);
-            Controls.Add(textBox3);
+            Controls.Add(new_pass_conf_textbox);
             Controls.Add(label1);
-            Controls.Add(textBox2);
+            Controls.Add(new_pass_textbox);
             Controls.Add(label4);
             Controls.Add(label3);
             FormBorderStyle = FormBorderStyle.None;
@@ -256,11 +256,11 @@
         private System.Windows.Forms.Label label_name_project;
         private System.Windows.Forms.Button Change_pass_btn;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox new_pass_conf_textbox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox new_pass_textbox;
         private System.Windows.Forms.Label label1;
-        private TextBox textBox1;
+        private TextBox current_password_textbox;
         private Label label2;
     }
 }

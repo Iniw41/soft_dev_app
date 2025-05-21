@@ -46,6 +46,17 @@ namespace Chat_Box.NVVM.View_Model
             }
         }
 
+        public string _password;
+        public string Password
+        {
+            get => _password;
+            set
+            {
+                _password = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ObservableCollection<MessageModel> Messages { get; set; }
         public ObservableCollection<ContactModel> Contacts { get; set; }
 

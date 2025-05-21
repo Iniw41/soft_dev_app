@@ -21,16 +21,18 @@ namespace Chat_Box
         private string Username;
         private string _email;
         private int _age;
-        
-        
+        private string _password;
 
-        public MainWindow(string username, string email, int age)
+
+
+        public MainWindow(string username, string email, int age, string password)
         {
             InitializeComponent();
             Username = username;
             _email = email;
             _age = age;
             DataContext = new NVVM.View_Model.MainViewModel();
+            _password = password;
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -60,7 +62,7 @@ namespace Chat_Box
 
         private void Icon_Click(object sender, RoutedEventArgs e)
         {
-            var settingsWindow = new Account_Settings(Username, _email, _age);
+            var settingsWindow = new Account_Settings(Username, _email, _age, _password);
             settingsWindow.Show();
         }
 

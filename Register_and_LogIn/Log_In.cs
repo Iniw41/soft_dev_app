@@ -85,13 +85,6 @@ namespace Register_and_LogIn
             register_window.Show();
         }
 
-        private void Forgot_Pass_Click_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Forget_Password forgot_password_window = new Forget_Password();
-            forgot_password_window.Show();
-        }
-
         private void LogIn_btn_Click(object sender, EventArgs e)
         {
             string username = username_textbox.Text.Trim();
@@ -124,18 +117,19 @@ namespace Register_and_LogIn
                     reader.Close();
                 }
                 this.Hide();
-                Account_Settings account_Settings = new Account_Settings(username, email, age);
+                Account_Settings account_Settings = new Account_Settings(username, email, age, password);
                 if (System.Windows.Application.Current == null)
                 {
                     var app = new Chat_Box.App();
                     app.InitializeComponent(); // Loads App.xaml resources
-                    Chat_Box.MainWindow wpfWindow = new Chat_Box.MainWindow(username, email, age);
+                    Chat_Box.MainWindow wpfWindow = new Chat_Box.MainWindow(username, email, age, password);
                     var vm = wpfWindow.DataContext as MainViewModel;
                     if (vm !=  null)
                     {
                         vm.username = username;
                         vm.Email = email;
                         vm.Age = age;
+                        vm.Password = password;
                     }
                     app.Run(wpfWindow);
                 }

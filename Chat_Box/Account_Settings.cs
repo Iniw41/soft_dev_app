@@ -18,12 +18,14 @@ namespace Chat_Box
         private string _username;
         private string _email;
         private int _age;
-        public Account_Settings(string username, string email, int age)
+        private string _password;
+        public Account_Settings(string username, string email, int age, string password)
         {
             InitializeComponent();
             _username = username;
             _email = email;
             _age = age;
+            _password = password;
 
             Username_info_text.Text = _username;
             Email_info_text.Text = _email;
@@ -33,7 +35,7 @@ namespace Chat_Box
         private void Go_forget_password_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Forget_Password forget_password_window = new Forget_Password();
+            Forget_Password forget_password_window = new Forget_Password(_password, _username);
             forget_password_window.Show();
 
         }
@@ -45,7 +47,7 @@ namespace Chat_Box
             {
                 var app = new Chat_Box.App();
                 app.InitializeComponent(); // Loads App.xaml resources
-                Chat_Box.MainWindow wpfWindow = new Chat_Box.MainWindow(_username, _email, _age);
+                Chat_Box.MainWindow wpfWindow = new Chat_Box.MainWindow(_username, _email, _age, _password);
                 app.Run(wpfWindow);
             }
         }
