@@ -112,7 +112,7 @@
                 </Grid>
 
                 <StackPanel VerticalAlignment="Center">
-                    <Label Content="Username"
+                    <Label Content="{Binding username}"
                Foreground="White"
                FontWeight="SemiBold"
                Margin="0, -5, 0,  -5"/>

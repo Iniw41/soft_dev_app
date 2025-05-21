@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Register_and_LogIn
 {
@@ -15,6 +16,10 @@ namespace Register_and_LogIn
         public Forget_Password()
         {
             InitializeComponent();
+        }
+        private void Change_pass_btn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

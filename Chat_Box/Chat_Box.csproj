@@ -28,7 +28,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="linq2db" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Account_Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forget_Password.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

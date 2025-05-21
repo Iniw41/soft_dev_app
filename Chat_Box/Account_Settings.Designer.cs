@@ -40,11 +40,12 @@
             label4 = new Label();
             label3 = new Label();
             Go_back_click = new Label();
-            label2 = new Label();
+            Username_info_text = new Label();
             label5 = new Label();
             label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
+            Email_info_text = new Label();
+            Age_info_text = new Label();
+            button1 = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -217,18 +218,18 @@
             Go_back_click.Text = "Go Back <";
             Go_back_click.Click += Go_back_click_Click;
             // 
-            // label2
+            // Username_info_text
             // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Noto Sans JP", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.Gray;
-            label2.Location = new Point(436, 124);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(145, 30);
-            label2.TabIndex = 45;
-            label2.Text = "Place Holder";
+            Username_info_text.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Username_info_text.AutoSize = true;
+            Username_info_text.Font = new Font("Noto Sans JP", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Username_info_text.ForeColor = Color.Gray;
+            Username_info_text.Location = new Point(436, 124);
+            Username_info_text.Margin = new Padding(4, 0, 4, 0);
+            Username_info_text.Name = "Username_info_text";
+            Username_info_text.Size = new Size(145, 30);
+            Username_info_text.TabIndex = 45;
+            Username_info_text.Text = "Place Holder";
             // 
             // label5
             // 
@@ -256,31 +257,46 @@
             label7.TabIndex = 47;
             label7.Text = "Age";
             // 
-            // label8
+            // Email_info_text
             // 
-            label8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label8.AutoSize = true;
-            label8.Font = new Font("Noto Sans JP", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.ForeColor = Color.Gray;
-            label8.Location = new Point(436, 257);
-            label8.Margin = new Padding(4, 0, 4, 0);
-            label8.Name = "label8";
-            label8.Size = new Size(208, 30);
-            label8.TabIndex = 48;
-            label8.Text = "Place Holder Email";
+            Email_info_text.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Email_info_text.AutoSize = true;
+            Email_info_text.Font = new Font("Noto Sans JP", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Email_info_text.ForeColor = Color.Gray;
+            Email_info_text.Location = new Point(436, 257);
+            Email_info_text.Margin = new Padding(4, 0, 4, 0);
+            Email_info_text.Name = "Email_info_text";
+            Email_info_text.Size = new Size(208, 30);
+            Email_info_text.TabIndex = 48;
+            Email_info_text.Text = "Place Holder Email";
             // 
-            // label9
+            // Age_info_text
             // 
-            label9.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label9.AutoSize = true;
-            label9.Font = new Font("Noto Sans JP", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Gray;
-            label9.Location = new Point(436, 314);
-            label9.Margin = new Padding(4, 0, 4, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(195, 30);
-            label9.TabIndex = 49;
-            label9.Text = "Age Place_Holder";
+            Age_info_text.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Age_info_text.AutoSize = true;
+            Age_info_text.Font = new Font("Noto Sans JP", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Age_info_text.ForeColor = Color.Gray;
+            Age_info_text.Location = new Point(436, 314);
+            Age_info_text.Margin = new Padding(4, 0, 4, 0);
+            Age_info_text.Name = "Age_info_text";
+            Age_info_text.Size = new Size(195, 30);
+            Age_info_text.TabIndex = 49;
+            Age_info_text.Text = "Age Place_Holder";
+            // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button1.BackColor = Color.FromArgb(41, 43, 47);
+            button1.FlatAppearance.BorderColor = Color.FromArgb(62, 65, 71);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.ForeColor = Color.Silver;
+            button1.Location = new Point(682, 191);
+            button1.Margin = new Padding(4, 3, 4, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(113, 30);
+            button1.TabIndex = 50;
+            button1.Text = "Enter";
+            button1.UseVisualStyleBackColor = false;
             // 
             // Account_Settings
             // 
@@ -288,11 +304,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(47, 49, 54);
             ClientSize = new Size(939, 528);
-            Controls.Add(label9);
-            Controls.Add(label8);
+            Controls.Add(button1);
+            Controls.Add(Age_info_text);
+            Controls.Add(Email_info_text);
             Controls.Add(label7);
             Controls.Add(label5);
-            Controls.Add(label2);
+            Controls.Add(Username_info_text);
             Controls.Add(Go_back_click);
             Controls.Add(Go_forget_password);
             Controls.Add(panel1);
@@ -324,10 +341,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label Go_back_click;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label Username_info_text;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label Email_info_text;
+        private System.Windows.Forms.Label Age_info_text;
+        private Button button1;
     }
 }

@@ -10,8 +10,41 @@ using Chat_Box.NVVM.Net;
 
 namespace Chat_Box.NVVM.View_Model
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
+        /* Properties */
+        private string _username;
+        public string username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _email;
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                _email = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _age;
+        public int Age
+        {
+            get => _age;
+            set
+            {
+                _age = value;
+                OnPropertyChanged();
+            }
+        }
 
         public ObservableCollection<MessageModel> Messages { get; set; }
         public ObservableCollection<ContactModel> Contacts { get; set; }
@@ -66,9 +99,9 @@ namespace Chat_Box.NVVM.View_Model
             {
                 Messages.Add(new MessageModel
                 {
-                    Username = "Iniw",
+                    Username = username,
                     Username_Color = "#409AFF",
-                    Image_Source = "Icons/Biniw.png",
+                    Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
                     Message = Message,
                     Time = DateTime.Now,
                     IsNativeOrigin = false,
@@ -81,50 +114,13 @@ namespace Chat_Box.NVVM.View_Model
             {
                 Username = "John Doe",
                 Username_Color = "#409AFF",
-                Image_Source = "Icons/Biniw.png",
-                Message = "Nigga",
+                Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
+                Message = "Hi",
                 Time = DateTime.Now,
                 IsNativeOrigin = false,
                 FirstMessage = true
             });
-
-            for (int i = 0; i < 3; i++)
-            {
-                Messages.Add(new MessageModel()
-                {
-                    Username = "Alo",
-                    Username_Color = "#409AFF",
-                    Image_Source = "Icons/Biniw.png",
-                    Message = "Nigga",
-                    Time = DateTime.Now,
-                    IsNativeOrigin = false,
-                    FirstMessage = false
-                });
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                Messages.Add(new MessageModel()
-                {
-                    Username = "John Doe",
-                    Username_Color = "#409AFF",
-                    Image_Source = "Icons/Biniw.png",
-                    Message = "Nigga",
-                    Time = DateTime.Now,
-                    IsNativeOrigin = true,
-                });
-            }
-
-            Messages.Add(new MessageModel()
-            {
-                Username = "John Doe",
-                Username_Color = "#409AFF",
-                Image_Source = "Icons/Biniw.png",
-                Message = "Bitch Ass",
-                Time = DateTime.Now,
-                IsNativeOrigin = true
-            });
-
-           
+            
             Contacts.Add(new ContactModel
             {
                 Username = $"Biniw Group Chat",

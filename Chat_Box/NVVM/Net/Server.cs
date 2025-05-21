@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chat_Box.NVVM.Net
 {
-    class Server
+    public class Server
     {
         TcpClient _client;
 

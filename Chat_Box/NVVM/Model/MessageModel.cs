@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Chat_Box.NVVM.Model
 {
-    internal class MessageModel
+    public class MessageModel
     {
         public string Username { get; set; }
         public string Username_Color { get; set; }

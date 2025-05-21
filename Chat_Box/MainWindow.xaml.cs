@@ -10,6 +10,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
 
+
 namespace Chat_Box
 {
     /// <summary>
@@ -17,9 +18,18 @@ namespace Chat_Box
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private string Username;
+        private string _email;
+        private int _age;
+        
+        
+
+        public MainWindow(string username, string email, int age)
         {
             InitializeComponent();
+            Username = username;
+            _email = email;
+            _age = age;
             DataContext = new NVVM.View_Model.MainViewModel();
         }
 
@@ -50,7 +60,7 @@ namespace Chat_Box
 
         private void Icon_Click(object sender, RoutedEventArgs e)
         {
-            var settingsWindow = new Account_Settings();
+            var settingsWindow = new Account_Settings(Username, _email, _age);
             settingsWindow.Show();
         }
 

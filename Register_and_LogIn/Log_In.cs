@@ -12,6 +12,8 @@ using System.Security.Cryptography;
 using Chat_Box;
 using Microsoft.Data.SqlClient;
 using System.Windows;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Chat_Box.NVVM.View_Model;
 
 
 
@@ -95,6 +97,7 @@ namespace Register_and_LogIn
             string username = username_textbox.Text.Trim();
             string password = password_textbox.Text;
 
+
             // Hash the password
             byte[] passwordHash = HashPassword(password);
 
@@ -102,15 +105,46 @@ namespace Register_and_LogIn
 
             if (isAuthenticated)
             {
+                string email = "";
+                int age = 0;
+                using (var conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+            SELECT email, age FROM Users
+            WHERE username = @username";
+                    cmd.Parameters.AddWithValue("@username", username);
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        email = reader.GetString(0);
+                        age = reader.GetInt32(1);
+                    }
+                    reader.Close();
+                }
                 this.Hide();
+                Account_Settings account_Settings = new Account_Settings(username, email, age);
                 if (System.Windows.Application.Current == null)
                 {
                     var app = new Chat_Box.App();
                     app.InitializeComponent(); // Loads App.xaml resources
-                    Chat_Box.MainWindow wpfWindow = new Chat_Box.MainWindow();
+                    Chat_Box.MainWindow wpfWindow = new Chat_Box.MainWindow(username, email, age);
+                    var vm = wpfWindow.DataContext as MainViewModel;
+                    if (vm !=  null)
+                    {
+                        vm.username = username;
+                        vm.Email = email;
+                        vm.Age = age;
+                    }
                     app.Run(wpfWindow);
                 }
             }
+            else 
+            {
+                System.Windows.MessageBox.Show("Invalid username or password.");
+            }
+
         }
 
         private bool AuthenticateUser(string username, byte[] passwordHash)

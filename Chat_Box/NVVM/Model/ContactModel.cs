@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Chat_Box.NVVM.Model
 {
-    internal class ContactModel
+    public class ContactModel
     {
         public string Username { get; set; }
         public string Image_Source { get; set; }
