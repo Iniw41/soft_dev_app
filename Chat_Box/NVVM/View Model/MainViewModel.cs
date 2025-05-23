@@ -7,138 +7,169 @@ using System.Threading.Tasks;
 using Chat_Box.Core;
 using Chat_Box.NVVM.Model;
 using Chat_Box.NVVM.Net;
+using Microsoft.Data.SqlClient;
 
 namespace Chat_Box.NVVM.View_Model
 {
     public class MainViewModel : ObservableObject
     {
-        /* Properties */
-        private string _username;
+        private string _username = string.Empty;
         public string username
         {
             get => _username;
-            set
-            {
-                _username = value;
-                OnPropertyChanged();
-            }
+            set { _username = value; OnPropertyChanged(); }
         }
 
-        private string _email;
+        private string _email = string.Empty;
         public string Email
         {
             get => _email;
-            set
-            {
-                _email = value;
-                OnPropertyChanged();
-            }
+            set { _email = value; OnPropertyChanged(); }
         }
 
         private int _age;
         public int Age
         {
             get => _age;
-            set
-            {
-                _age = value;
-                OnPropertyChanged();
-            }
+            set { _age = value; OnPropertyChanged(); }
         }
 
-        public string _password;
+        private string _password = string.Empty;
         public string Password
         {
             get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged();
-            }
+            set { _password = value; OnPropertyChanged(); }
+        }
+
+        private string _message = string.Empty;
+        public string Message
+        {
+            get => _message;
+            set { _message = value; OnPropertyChanged(); }
         }
 
         public ObservableCollection<MessageModel> Messages { get; set; }
         public ObservableCollection<ContactModel> Contacts { get; set; }
 
-        /* Commands */
+        private ContactModel _selectedContact;
+        public ContactModel SelectedContact
+        {
+            get => _selectedContact;
+            set
+            {
+                _selectedContact = value;
+                if (_selectedContact != null)
+                {
+                    _selectedContact.Messages = LoadChatHistory(username, _selectedContact.Username);
+                }
+                OnPropertyChanged();
+            }
+        }
+
         public RelayCommand ConnectToServerCommand { get; set; }
+        public RelayCommand SendCommand { get; set; }
 
         private Server _server;
 
-        public  RelayCommand SendCommand { get; set; }
-
-        private ContactModel _selectedContact;
-
-        public ContactModel SelectedContact
-        {
-            get { return _selectedContact; }
-            set 
-            {
-                _selectedContact = value;
-                OnPropertyChanged();
-            }
-        }
-
-
-        private string _message;
-
-        public string Message
-        {
-            get { return _message; }
-            set { 
-                _message = value; 
-                OnPropertyChanged();
-
-                if (_selectedContact != null)
-                {
-                    
-                }
-            }
-        }
-
-
-
         public MainViewModel()
         {
-            _server  = new Server();
+            _server = new Server();
             ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer());
 
             Messages = new ObservableCollection<MessageModel>();
             Contacts = new ObservableCollection<ContactModel>();
 
+            LoadContactsFromDatabase();
+
             SendCommand = new RelayCommand(o =>
             {
-                Messages.Add(new MessageModel
+                if (SelectedContact == null || string.IsNullOrWhiteSpace(Message))
+                    return;
+
+                string connectionString = "Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
+                using (var conn = new SqlConnection(connectionString))
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                            INSERT INTO Chats (SenderUsername, ReceiverUsername, MessageText, SentTime)
+                            VALUES (@sender, @receiver, @message, @time)";
+                    cmd.Parameters.AddWithValue("@sender", username);
+                    cmd.Parameters.AddWithValue("@receiver", SelectedContact.Username);
+                    cmd.Parameters.AddWithValue("@message", Message);
+                    cmd.Parameters.AddWithValue("@time", DateTime.Now);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                SelectedContact.Messages.Add(new MessageModel
                 {
                     Username = username,
-                    Username_Color = "#409AFF",
-                    Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
                     Message = Message,
                     Time = DateTime.Now,
-                    IsNativeOrigin = false,
-                    FirstMessage = true,
+                    IsNativeOrigin = true
                 });
                 Message = "";
             });
+        }
 
-            Messages.Add(new MessageModel()
+        private ObservableCollection<MessageModel> LoadChatHistory(string user1, string user2)
+        {
+            var messages = new ObservableCollection<MessageModel>();
+            string connectionString = "Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = conn.CreateCommand())
             {
-                Username = "John Doe",
-                Username_Color = "#409AFF",
-                Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
-                Message = "Hi",
-                Time = DateTime.Now,
-                IsNativeOrigin = false,
-                FirstMessage = true
-            });
-            
-            Contacts.Add(new ContactModel
+                cmd.CommandText = @"
+                        SELECT SenderUsername, MessageText, SentTime
+                        FROM Chats
+                        WHERE (SenderUsername = @user1 AND ReceiverUsername = @user2)
+                           OR (SenderUsername = @user2 AND ReceiverUsername = @user1)
+                        ORDER BY SentTime";
+                cmd.Parameters.AddWithValue("@user1", user1);
+                cmd.Parameters.AddWithValue("@user2", user2);
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        messages.Add(new MessageModel
+                        {
+                            Username = reader.GetString(0),
+                            Message = reader.GetString(1),
+                            Time = reader.GetDateTime(2),
+                            IsNativeOrigin = reader.GetString(0) == username
+                        });
+                    }
+                }
+            }
+            return messages;
+        }
+
+        private void LoadContactsFromDatabase()
+        {
+            string connectionString = "Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = conn.CreateCommand())
             {
-                Username = $"Biniw Group Chat",
-                Image_Source = "https://dinopixel.com/preload/0523/SLIME-3.png",
-                Messages = Messages
-            });
- 
+                cmd.CommandText = "SELECT username FROM Users WHERE username <> @currentUser";
+                cmd.Parameters.AddWithValue("@currentUser", username ?? "");
+
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Contacts.Add(new ContactModel
+                        {
+                            Username = reader.GetString(0),
+                            Image_Source = "https://dinopixel.com/preload/0523/SLIME-3.png",
+                            Messages = new ObservableCollection<MessageModel>()
+                        });
+                    }
+                }
+            }
         }
     }
 }

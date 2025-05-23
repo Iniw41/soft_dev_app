@@ -35,7 +35,7 @@
             close_btn = new Button();
             label_name_project = new Label();
             label6 = new Label();
-            textBox3 = new TextBox();
+            change_username_textbox = new TextBox();
             label1 = new Label();
             label4 = new Label();
             label3 = new Label();
@@ -45,7 +45,8 @@
             label7 = new Label();
             Email_info_text = new Label();
             Age_info_text = new Label();
-            button1 = new Button();
+            change_username_btn = new Button();
+            Delete_account = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -152,18 +153,18 @@
             label6.TabIndex = 41;
             label6.Text = "Passord Change";
             // 
-            // textBox3
+            // change_username_textbox
             // 
-            textBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            textBox3.BackColor = Color.FromArgb(62, 65, 71);
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox3.ForeColor = Color.Gray;
-            textBox3.Location = new Point(436, 190);
-            textBox3.Margin = new Padding(4, 3, 4, 3);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(227, 31);
-            textBox3.TabIndex = 36;
+            change_username_textbox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            change_username_textbox.BackColor = Color.FromArgb(62, 65, 71);
+            change_username_textbox.BorderStyle = BorderStyle.FixedSingle;
+            change_username_textbox.Font = new Font("Noto Sans JP", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            change_username_textbox.ForeColor = Color.Gray;
+            change_username_textbox.Location = new Point(436, 190);
+            change_username_textbox.Margin = new Padding(4, 3, 4, 3);
+            change_username_textbox.Name = "change_username_textbox";
+            change_username_textbox.Size = new Size(227, 31);
+            change_username_textbox.TabIndex = 36;
             // 
             // label1
             // 
@@ -283,20 +284,35 @@
             Age_info_text.TabIndex = 49;
             Age_info_text.Text = "Age Place_Holder";
             // 
-            // button1
+            // change_username_btn
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            button1.BackColor = Color.FromArgb(41, 43, 47);
-            button1.FlatAppearance.BorderColor = Color.FromArgb(62, 65, 71);
-            button1.FlatStyle = FlatStyle.Flat;
-            button1.ForeColor = Color.Silver;
-            button1.Location = new Point(682, 191);
-            button1.Margin = new Padding(4, 3, 4, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(113, 30);
-            button1.TabIndex = 50;
-            button1.Text = "Enter";
-            button1.UseVisualStyleBackColor = false;
+            change_username_btn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            change_username_btn.BackColor = Color.FromArgb(41, 43, 47);
+            change_username_btn.FlatAppearance.BorderColor = Color.FromArgb(62, 65, 71);
+            change_username_btn.FlatStyle = FlatStyle.Flat;
+            change_username_btn.ForeColor = Color.Silver;
+            change_username_btn.Location = new Point(682, 191);
+            change_username_btn.Margin = new Padding(4, 3, 4, 3);
+            change_username_btn.Name = "change_username_btn";
+            change_username_btn.Size = new Size(113, 30);
+            change_username_btn.TabIndex = 50;
+            change_username_btn.Text = "Enter";
+            change_username_btn.UseVisualStyleBackColor = false;
+            change_username_btn.Click += change_username_btn_Click;
+            // 
+            // Delete_account
+            // 
+            Delete_account.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            Delete_account.AutoSize = true;
+            Delete_account.Font = new Font("Noto Sans JP Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Delete_account.ForeColor = Color.Gray;
+            Delete_account.Location = new Point(45, 474);
+            Delete_account.Margin = new Padding(4, 0, 4, 0);
+            Delete_account.Name = "Delete_account";
+            Delete_account.Size = new Size(125, 24);
+            Delete_account.TabIndex = 51;
+            Delete_account.Text = "Delete Account";
+            Delete_account.Click += Delete_account_Click;
             // 
             // Account_Settings
             // 
@@ -304,7 +320,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(47, 49, 54);
             ClientSize = new Size(939, 528);
-            Controls.Add(button1);
+            Controls.Add(Delete_account);
+            Controls.Add(change_username_btn);
             Controls.Add(Age_info_text);
             Controls.Add(Email_info_text);
             Controls.Add(label7);
@@ -314,7 +331,7 @@
             Controls.Add(Go_forget_password);
             Controls.Add(panel1);
             Controls.Add(label6);
-            Controls.Add(textBox3);
+            Controls.Add(change_username_textbox);
             Controls.Add(label1);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -346,6 +363,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label Email_info_text;
         private System.Windows.Forms.Label Age_info_text;
-        private Button button1;
+        private Button change_username_btn;
+        private Label Delete_account;
+        private TextBox change_username_textbox;
     }
 }

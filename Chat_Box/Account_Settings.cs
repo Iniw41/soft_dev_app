@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows;
 using Register_and_LogIn;
+using Microsoft.Data.SqlClient;
 
 
 namespace Chat_Box
 {
     public partial class Account_Settings : Form
     {
+        private string connectionString = "Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
         private string _username;
         private string _email;
         private int _age;
@@ -72,6 +74,75 @@ namespace Chat_Box
         private void Minimize_btn_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void change_username_btn_Click(object sender, EventArgs e)
+        {
+            var new_username = change_username_textbox.Text;
+            if (string.IsNullOrEmpty(new_username))
+            {
+                System.Windows.MessageBox.Show("Please enter a new username.");
+                return;
+            }
+
+            string old_username = _username;
+
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = conn.CreateCommand())
+            {
+                cmd.CommandText = @"
+                UPDATE Users
+                SET username = @username
+                WHERE username = @oldusername";
+
+                cmd.Parameters.AddWithValue("@username", new_username);
+                cmd.Parameters.AddWithValue("@oldUsername", old_username);
+
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    System.Windows.MessageBox.Show("Username updated successfully.");
+                    _username = new_username; // Update the local field if needed
+                    this.Close();
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Faild to update Username");
+                }
+            }
+        }
+        private void Delete_account_Click(object sender, EventArgs e)
+        {
+            var result = System.Windows.MessageBox.Show(
+        "Are you sure you want to delete your account?",
+        "Confirm Delete",
+        MessageBoxButton.OKCancel,
+        MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.OK)
+            {
+                using (var conn = new SqlConnection(connectionString))
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Users WHERE username = @username";
+                    cmd.Parameters.AddWithValue("@username", _username);
+
+                    conn.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected > 0)
+                    {
+                        System.Windows.MessageBox.Show("Account deleted successfully.");
+                        this.Close();
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Failed to delete account.");
+                    }
+                }
+            }
         }
     }
 }

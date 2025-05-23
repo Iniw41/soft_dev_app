@@ -16,26 +16,12 @@ namespace Chat_Box.NVVM.Net
             _client = new TcpClient();
         }
 
-        public void ConnectToServer(string ip, int port)
+        public void ConnectToServer()
         {
-            try
-            {
-                _client.Connect("127.0.0.1", 5781);
-                Console.WriteLine("Connected to server");
+            if (!_client.Connected)
+            { 
+                _client.Connect("127.0.0.1", 7892);
             }
-            catch (SocketException ex)
-            {
-                Console.WriteLine($"SocketException: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Exception: {ex.Message}");
-            }
-        }
-
-        internal void ConnectToServer()
-        {
-            throw new NotImplementedException();
         }
     }
 }

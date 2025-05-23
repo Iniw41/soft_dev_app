@@ -131,11 +131,11 @@ namespace Register_and_LogIn
 
                                 var newId = Convert.ToInt32(cmd.ExecuteScalar());
 
-                                    MessageBox.Show($"Registration successful! Your user ID is {newId}.");
-                                    this.Hide();
-                                    Log_In LogIn_Window = new Log_In();
-                                    LogIn_Window.Show();
-                                
+                                MessageBox.Show($"Registration successful! Your user ID is {newId}.");
+                                this.Hide();
+                                Log_In LogIn_Window = new Log_In();
+                                LogIn_Window.Show();
+
                             }
                         }
                         catch (SqlException ex)
@@ -169,10 +169,20 @@ namespace Register_and_LogIn
                 e.Handled = true;
             }
 
-            if  ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

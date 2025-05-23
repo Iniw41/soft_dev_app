@@ -9,6 +9,15 @@ CREATE TABLE Users (
     age INT NULL
 );
 
--- 2. Insert three initial users (you don’t supply id; SQL Server will assign 1, 2, 3)
-INSERT INTO Users (username, password_hash, email, age)
-VALUES  ('Biniw', HASHBYTES('SHA2_256','Test_Admin'),   'carol@example.com', 22);
+
+CREATE TABLE Chats (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    SenderUsername VARCHAR(50) NOT NULL,
+    ReceiverUsername VARCHAR(50) NOT NULL,
+    MessageText NVARCHAR(MAX) NOT NULL,
+    SentTime DATETIME NOT NULL
+);USE Iniw_Chat_DB;
+GO
+
+
+
