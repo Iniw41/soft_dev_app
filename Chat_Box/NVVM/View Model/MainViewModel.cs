@@ -74,7 +74,7 @@ namespace Chat_Box.NVVM.View_Model
         public MainViewModel()
         {
             _server = new Server();
-            ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer());
+            ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer(username));
 
             Messages = new ObservableCollection<MessageModel>();
             Contacts = new ObservableCollection<ContactModel>();
@@ -152,7 +152,7 @@ namespace Chat_Box.NVVM.View_Model
             return messages;
         }
 
-        private void LoadContactsFromDatabase()
+        public void LoadContactsFromDatabase()
         {
             string connectionString = "Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
             using (var conn = new SqlConnection(connectionString))

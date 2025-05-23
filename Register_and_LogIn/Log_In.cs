@@ -131,6 +131,12 @@ namespace Register_and_LogIn
                         vm.Age = age;
                         vm.Password = password;
                     }
+                    string loggedInUsername = username;
+                    var mainViewModel = new MainViewModel();
+                    mainViewModel.username = loggedInUsername;
+                    mainViewModel.LoadContactsFromDatabase();
+
+                    mainViewModel.ConnectToServerCommand.Execute(null);
                     app.Run(wpfWindow);
                 }
             }
