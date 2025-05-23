@@ -27,6 +27,37 @@ namespace Chat_Server
             Username = _packetReader.ReadMessage();
 
             Console.WriteLine($"[Client {Username} Connected {DateTime.Now}]");
+
+            Task.Run(() =>Process());
+        }
+
+        void Process()
+        {
+            while (true)
+            {
+                try
+                {
+                    var opcode = _packetReader.ReadByte();
+                    switch (opcode)
+                    {
+                        case 5:
+                            var message = _packetReader.ReadMessage();
+                            Console.WriteLine($"[{DateTime.Now}Client {Username} Message: {message}]");
+                            Program.BroadcastMessage($"[{DateTime.Now}]: [{Username}]: {message}");
+                            break;
+                        default:
+                            Console.WriteLine("Unknown opcode");
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"[Client {Username} Disconnected {DateTime.Now}]");
+                    Program.BroadcastDisconnect(Username);
+                    ClientSocket.Close();
+                    break;
+                }
+            }
         }
     }
 }

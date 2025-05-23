@@ -8,6 +8,13 @@
     <StartupObject>Register_and_LogIn.Program</StartupObject>
     <OutputType>WinExe</OutputType>
     <SsdtUnitTestVersion>3.1</SsdtUnitTestVersion>
+    <SignAssembly>False</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <IsPublishable>True</IsPublishable>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <IsPublishable>True</IsPublishable>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Configuration" />

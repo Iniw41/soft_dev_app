@@ -133,7 +133,7 @@
             label3.AutoSize = true;
             label3.Font = new System.Drawing.Font("Noto Sans JP", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label3.ForeColor = System.Drawing.Color.Gray;
-            label3.Location = new System.Drawing.Point(267, 188);
+            label3.Location = new System.Drawing.Point(267, 197);
             label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(112, 30);
@@ -160,7 +160,7 @@
             password_textbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             password_textbox.Font = new System.Drawing.Font("Noto Sans JP", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             password_textbox.ForeColor = System.Drawing.Color.Gray;
-            password_textbox.Location = new System.Drawing.Point(405, 187);
+            password_textbox.Location = new System.Drawing.Point(405, 196);
             password_textbox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             password_textbox.Name = "password_textbox";
             password_textbox.Size = new System.Drawing.Size(227, 31);

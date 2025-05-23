@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Chat_Box.NVVM.Net.IO
+namespace Chat_Server.NET.IO
 {
     class PacketBuilder
     {
         MemoryStream _ms;
-        public PacketBuilder() 
+        public PacketBuilder()
         {
             _ms = new MemoryStream();
         }

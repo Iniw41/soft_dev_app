@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -74,7 +75,11 @@ namespace Chat_Box.NVVM.View_Model
         public MainViewModel()
         {
             _server = new Server();
+            _server.connectedEvent += UserConnected;
+            _server.msgReciveEvent += MessageRecive;
+            _server.UserDisconnectEvent += RemoveUser;
             ConnectToServerCommand = new RelayCommand(o => _server.ConnectToServer(username));
+   
 
             Messages = new ObservableCollection<MessageModel>();
             Contacts = new ObservableCollection<ContactModel>();
@@ -114,6 +119,38 @@ namespace Chat_Box.NVVM.View_Model
                 });
                 Message = "";
             });
+        }
+
+        private void RemoveUser()
+        {
+            var User = _server.PacketReader.ReadMessage();
+
+            var user = Contacts.Where(x => x.Username == User).FirstOrDefault();
+
+            System.Windows.Application.Current.Dispatcher.Invoke(() =>Contacts.Remove(user));
+        }
+
+        private void MessageRecive()
+        {
+            var msg  = _server.PacketReader.ReadMessage();
+            System.Windows.Application.Current.Dispatcher.Invoke(() => Message);
+        }
+
+        private void UserConnected()
+        {
+            // Handle user connected event
+            var user = new ContactModel();
+            {
+                username = _server.PacketReader.ReadMessage();
+            };
+
+            if (!Contacts.Any(x => x.Id == user.Id))
+            {
+                System.Windows.Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Contacts.Add(user);
+                });
+            }
         }
 
         private ObservableCollection<MessageModel> LoadChatHistory(string user1, string user2)
@@ -158,7 +195,7 @@ namespace Chat_Box.NVVM.View_Model
             using (var conn = new SqlConnection(connectionString))
             using (var cmd = conn.CreateCommand())
             {
-                cmd.CommandText = "SELECT username FROM Users WHERE username <> @currentUser";
+                cmd.CommandText = "SELECT id, username FROM Users WHERE username <> @currentUser";
                 cmd.Parameters.AddWithValue("@currentUser", username ?? "");
 
                 conn.Open();
@@ -168,7 +205,7 @@ namespace Chat_Box.NVVM.View_Model
                     {
                         Contacts.Add(new ContactModel
                         {
-                            Username = reader.GetString(0),
+                            Username = reader.GetString(1),
                             Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
                             Messages = new ObservableCollection<MessageModel>()
                         });
