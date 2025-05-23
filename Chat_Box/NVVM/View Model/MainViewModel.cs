@@ -105,9 +105,12 @@ namespace Chat_Box.NVVM.View_Model
                 SelectedContact.Messages.Add(new MessageModel
                 {
                     Username = username,
+                    Username_Color = "#409AFF",
                     Message = Message,
                     Time = DateTime.Now,
-                    IsNativeOrigin = true
+                    IsNativeOrigin = true,
+                    FirstMessage = true,
+                    Image_Source = "https://i.redd.it/9ydxs78g66e61.png"
                 });
                 Message = "";
             });
@@ -137,8 +140,10 @@ namespace Chat_Box.NVVM.View_Model
                         messages.Add(new MessageModel
                         {
                             Username = reader.GetString(0),
+                            Username_Color = "#409AFF",
                             Message = reader.GetString(1),
                             Time = reader.GetDateTime(2),
+                            Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
                             IsNativeOrigin = reader.GetString(0) == username
                         });
                     }
@@ -164,7 +169,7 @@ namespace Chat_Box.NVVM.View_Model
                         Contacts.Add(new ContactModel
                         {
                             Username = reader.GetString(0),
-                            Image_Source = "https://dinopixel.com/preload/0523/SLIME-3.png",
+                            Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
                             Messages = new ObservableCollection<MessageModel>()
                         });
                     }
@@ -173,3 +178,13 @@ namespace Chat_Box.NVVM.View_Model
         }
     }
 }
+
+
+/***Username = username,
+                    Username_Color = "#409AFF",
+                    Image_Source = "https://i.redd.it/9ydxs78g66e61.png",
+                    Message = Message,
+                    Time = DateTime.Now,
+                    IsNativeOrigin = false,
+                    FirstMessage = true,
+***/
