@@ -17,12 +17,15 @@ namespace Register_and_LogIn
         private string connectionString = "Server=INIW;Database=Iniw_Chat_DB;Trusted_Connection=True;TrustServerCertificate=True;";
         private string _password;
         private string _username;
+
+        bool mouseDown;
+        private System.Drawing.Point lastLocation;
         public Forget_Password(string password, string username)
         {
             _password = password;
             _username = username;
             InitializeComponent();
-            
+
         }
         private void Change_pass_btn_Click(object sender, EventArgs e)
         {
@@ -44,7 +47,7 @@ namespace Register_and_LogIn
             // Hash the new password
             byte[] newPasswordHash = HashPassword(new_password);
 
-            
+
             string username = _username;
 
             using (var conn = new Microsoft.Data.SqlClient.SqlConnection(connectionString))
@@ -119,6 +122,27 @@ namespace Register_and_LogIn
             {
                 return sha.ComputeHash(Encoding.UTF8.GetBytes(password));
             }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new System.Drawing.Point(
+                        (this.Location.X - lastLocation.X) + e.X,
+                        (this.Location.Y - lastLocation.Y) + e.Y);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

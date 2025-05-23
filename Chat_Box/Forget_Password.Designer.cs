@@ -57,6 +57,9 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(933, 42);
             panel1.TabIndex = 2;
+            panel1.MouseDown += panel1_MouseDown;
+            panel1.MouseMove += panel1_MouseMove;
+            panel1.MouseUp += panel1_MouseUp;
             // 
             // Minimize_btn
             // 

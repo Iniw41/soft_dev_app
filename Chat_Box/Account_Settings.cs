@@ -21,6 +21,9 @@ namespace Chat_Box
         private string _email;
         private int _age;
         private string _password;
+
+        bool mouseDown;
+        private System.Drawing.Point lastLocation;
         public Account_Settings(string username, string email, int age, string password)
         {
             InitializeComponent();
@@ -143,6 +146,27 @@ namespace Chat_Box
                     }
                 }
             }
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new System.Drawing.Point(
+                        (this.Location.X - lastLocation.X) + e.X,
+                        (this.Location.Y - lastLocation.Y) + e.Y);
+            }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }
